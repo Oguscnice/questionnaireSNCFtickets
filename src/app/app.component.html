@@ -1,1 +1,195 @@
-<h1>Formulaire</h1>
+<div class="page-component">
+  <h1><img src="../assets/sncf.png" class="logo" alt="" /> Formulaire</h1>
+  <h2>Ayant-droit</h2>
+  <form
+    class="usual-form"
+    (ngSubmit)="onSubmitAddMemberFamily()"
+    #myForm="ngForm"
+    class="usual-form"
+    [formGroup]="f"
+  >
+    <fieldset>
+      <label for="lastname-new-member">Nom</label>
+      <input
+        type="text"
+        placeholder="Tapez le nom de famille..."
+        class="input-text"
+        formControlName="lastname"
+        id="lastname-new-member"
+        name="lastname-new-member"
+      />
+      <p
+        class="indication-input"
+        *ngIf="fc.lastname.errors?.['required'] && myForm.submitted"
+      >
+        Le nom est requis
+      </p>
+    </fieldset>
+    <fieldset>
+      <label for="firstname-new-member">Prénom</label>
+      <input
+        id="firstname-new-member"
+        name="firstname-new-member"
+        formControlName="firstname"
+        type="text"
+        placeholder="Tapez votre prénom..."
+        class="input-text"
+      />
+      <p
+        class="indication-input"
+        *ngIf="fc.firstname.errors?.['required'] && myForm.submitted"
+      >
+        Le prénom est requis
+      </p>
+    </fieldset>
+    <fieldset>
+      <fieldset>
+        <label for="birthdate-new-member">Date de naissance</label>
+        <input
+          id="birthdate-new-member"
+          name="birthdate-new-member"
+          type="date"
+          formControlName="birthdate"
+          class="input-text input-date"
+        />
+        <p
+          class="indication-input"
+          *ngIf="fc.birthdate.errors?.['required'] && myForm.submitted"
+        >
+          La date doit être renseignée
+        </p>
+      </fieldset>
+      <label>Email</label>
+      <input
+        type="text"
+        placeholder="Tapez votre email..."
+        class="input-text"
+      />
+    </fieldset>
+    <fieldset>
+      <label>Lien familial</label>
+      <div
+        class="input-radio-add-member-family"
+        *ngFor="let link of familyLinkArray"
+      >
+        <div class="input-radio-and-name">
+          <input
+            id="familyLink{{ link.value }}"
+            type="radio"
+            [value]="link.value"
+            formControlName="familyLink"
+            class="input-radio"
+            (click)="enfantCountChange()"
+          />
+          <p>{{ link.name }}</p>
+        </div>
+      </div>
+      <p
+        class="indication-input"
+        *ngIf="fc.familyLink.errors?.['required'] && myForm.submitted"
+      >
+        Le lien familial est requis
+      </p>
+    </fieldset>
+    <fieldset *ngIf="enfantCount">
+      <label>Nombre d'enfant(s)</label>
+      <input
+        type="text"
+        placeholder="Combien ?"
+        class="input-text"
+        formControlName="children"
+      />
+      <p
+        class="indication-input"
+        *ngIf="fc.children.errors?.['required'] && myForm.submitted"
+      >
+        Le nombre d'enfant est requis
+      </p>
+    </fieldset>
+    <fieldset *ngIf="enfantCount" (click)="lancerModalEcho()">
+      <label>Nombre de petit(s) enfant(s)</label>
+      <input
+        type="number"
+        placeholder="Combien ?"
+        class="input-text"
+        formControlName="littleChildren"
+      />
+      <p
+        class="indication-input"
+        *ngIf="fc.children.errors?.['required'] && myForm.submitted"
+      >
+        Le nombre de petit(s) enfant(s) est requis
+      </p>
+      <p class="indication-input" *ngIf="errorNumberChirldren">
+        Ce chiffre n'est pas valide.
+      </p>
+    </fieldset>
+
+    <div class="two-buttons display-none">
+      <button type="submit" class="button-valid" #validAddMember>
+        Valider
+      </button>
+      <button
+        class="button-cancel"
+        type="button"
+        routerLink="/ma-famille"
+        #cancelAddMember
+      >
+        Annuler
+      </button>
+    </div>
+  </form>
+  <div class="two-buttons up-from-footer">
+    <button
+      type="submit"
+      class="button-cancel"
+      (click)="cancelAddMember.click()"
+    >
+      Annuler
+    </button>
+    <button class="button-valid" type="button" (click)="validAddMember.click()">
+      Valider
+    </button>
+  </div>
+</div>
+<div *ngIf="modalBooleanFirst" class="modal-confirmation-page">
+  <div class="content-text-and-buttons">
+    <img src="../assets/sncf.png" alt="" />
+    <div class="position-loader">
+      <div class="loader-circle">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="modalBooleanError" class="modal-confirmation-page">
+  <div class="content-text-and-buttons">
+    <p>Une erreur est apparue, merci de vérifier le formulaire</p>
+    <div>
+      <button (click)="closeModalAndSendResponseIfExist()" class="button-valid">
+        Bien compris !
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="modalEcho" class="modal-confirmation-page">
+  <div class="content-text-and-buttons">
+    <p>Ce chiffre n'est pas bon</p>
+    <div class="allImages">
+      <div class="one">
+        <img src="../assets/test - Copie.jpg" alt="" />
+      </div>
+      <div class="two">
+        <img src="../assets/leon.jpg" alt="" />
+        <img src="../assets/echo.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
