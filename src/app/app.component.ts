@@ -8,7 +8,7 @@ import { BanApiService } from './ban-api.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private formBuilder: FormBuilder, public banApi : BanApiService) {}
+  constructor(private formBuilder: FormBuilder, public banApi: BanApiService) {}
 
   title = 'questionnaireSNCFtickets';
   modalBooleanFirst: boolean = true;
@@ -19,6 +19,7 @@ export class AppComponent {
   adressName: string = '';
   adressApi!: any;
   hasAdressApi: boolean = false;
+  numberDisplay!: any;
 
   familyLinkArray = [
     { name: 'Conjoint(e)', value: 'Conjoint(e)' },
@@ -87,6 +88,7 @@ export class AppComponent {
 
   onSubmitAddMemberFamily() {
     if (this.addMemberForm.valid) {
+      this.numberDisplay = this.addMemberForm.value.littleChildren;
       this.modalBooleanError = true;
     }
   }

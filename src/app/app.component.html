@@ -108,7 +108,6 @@
       </ul>
     </fieldset>
 
-
     <fieldset>
       <label>Lien familial</label>
       <div
@@ -152,11 +151,15 @@
     <fieldset *ngIf="enfantCount" (click)="lancerModalEcho()">
       <label>Nombre de petit(s) enfant(s)</label>
       <input
+        *ngIf="!errorNumberChirldren"
         type="number"
         placeholder="Combien ?"
         class="input-text"
         formControlName="littleChildren"
       />
+      <div *ngIf="errorNumberChirldren" class="input-text">
+        {{ numberDisplay }}
+      </div>
       <p
         class="indication-input"
         *ngIf="fc.children.errors?.['required'] && myForm.submitted"
@@ -237,6 +240,5 @@
       </div>
       <p class="equals">= 2</p>
     </div>
-
   </div>
 </div>
