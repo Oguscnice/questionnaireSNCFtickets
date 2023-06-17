@@ -565,7 +565,7 @@ table {
     background-color: var(--main-color);
     width: 75%;
     max-width: 300px;
-    max-height: 450px;
+    // max-height: 450px;
     border-radius: 10px;
     border: 2px solid var(--second-color);
     padding: 20px;
@@ -575,7 +575,34 @@ table {
       font-size: calc($font-size * 1.4);
     }
   }
+  .allImages{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    .one{
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      .cubeThird{
+        font-size: 4rem;
+      }
+    }
+    .two{
+      width: 75%;
+      img{
+        width: 100%;
+      }
+    }
+    .equals{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      font-size: 4rem;
+    }
+  }
 }
+
 .page-component {
   display: flex;
   flex-direction: column;
@@ -603,22 +630,19 @@ h1{
   }
 }
 
-.allImages{
-  display: flex;
+
+.display-adress {
+  position: absolute;
+  margin-top: 76px;
   width: 100%;
-  .one{
-    max-width: 30%;
-    height: 100%;
-    object-fit: fill;
-    img{
-      width: 100%;
-    }
+  background-color: var(--main-color);
+  border: 2px solid var(--second-color);
+  max-width: 323px;
+  li {
+    padding: 4px;
   }
-  .two{
-    width: 100%;
-    img{
-      width: 100%;
-    }
+  li:nth-child(2n) {
+    background-color: var(--second-color);
   }
 }
 @media screen and (min-width: 570px) {
@@ -640,73 +664,19 @@ h1{
       }
     }
   }
-  .modal-confirmation-page {
-    .content-text-and-buttons {
-      max-height: 300px;
-    }
+  .display-adress {
+    max-width: 294px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .fullPage {
     .navbarAndRouter {
-      .navigation-page,
-      .add-member-family-page,
-      .my-family-page,
-      .forgot-password-page,
-      .login-page,
-      .signup-page,
-      .honor-declaration-page,
-      .steal-and-loose-page,
-      .page-not-found-page,
-      .edit-password-page,
-      .edit-my-profil-page,
-      .my-profil-page,
-      .navigation-page,
-      .request-in-progress-page,
-      .my-request-page,
-      .create-new-request-page,
-      .admin-requests-ticket-list-page,
-      .admin-family-members-list-page,
-      .admin-manage-family-user-page,
-      .admin-resquest-ticket-user-page,
-      .admin-users-list-page,
-      .admin-family-member-request-page,
-      .verification-page,
-      .forgot-password-form-page {
-        overflow-x: hidden;
-        margin: 0;
-        width: 75vw;
-        margin-left: 25vw;
-        @include flex-column;
-        padding-top: 40px;
-        padding-bottom: 0px;
-        height: calc(100vh - 40px);
-        table {
-          width: 80%;
-        }
-        .two-buttons {
-          justify-content: space-around;
-        }
-      }
       .title {
         h1 {
           text-align: center;
           width: 100%;
         }
-        .arrow {
-          position: fixed;
-          cursor: pointer;
-          top: calc(40px + $margin-page);
-          right: ($margin-page);
-        }
-      }
-      .navbar-container {
-        padding-top: 40px;
-      }
-      .no-connected {
-        margin: 0;
-        width: 100vw;
       }
     }
   }
@@ -721,5 +691,14 @@ h1{
   }
   .content-text-and-buttons {
     margin-left: 25vw;
+  }
+  .display-adress {
+    max-width: 631px;
+    li {
+      cursor: pointer;
+    }
+    li:hover {
+      font-weight: bold;
+    }
   }
 }

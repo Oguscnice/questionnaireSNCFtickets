@@ -43,29 +43,72 @@
       </p>
     </fieldset>
     <fieldset>
-      <fieldset>
-        <label for="birthdate-new-member">Date de naissance</label>
-        <input
-          id="birthdate-new-member"
-          name="birthdate-new-member"
-          type="date"
-          formControlName="birthdate"
-          class="input-text input-date"
-        />
-        <p
-          class="indication-input"
-          *ngIf="fc.birthdate.errors?.['required'] && myForm.submitted"
-        >
-          La date doit être renseignée
-        </p>
-      </fieldset>
+      <label for="birthdate-new-member">Date de naissance</label>
+      <input
+        id="birthdate-new-member"
+        name="birthdate-new-member"
+        type="date"
+        formControlName="birthdate"
+        class="input-text input-date"
+      />
+      <p
+        class="indication-input"
+        *ngIf="fc.birthdate.errors?.['required'] && myForm.submitted"
+      >
+        La date doit être renseignée
+      </p>
+    </fieldset>
+    <fieldset>
       <label>Email</label>
       <input
         type="text"
         placeholder="Tapez votre email..."
         class="input-text"
+        formControlName="email"
       />
+      <p
+        class="indication-input"
+        *ngIf="fc.email.errors?.['required'] && myForm.submitted"
+      >
+        L'email doit être renseigné
+      </p>
+      <p
+        class="indication-input"
+        *ngIf="fc.email.errors?.['email'] && myForm.submitted"
+      >
+        L'email n'est pas au bon format
+      </p>
     </fieldset>
+    <fieldset>
+      <label for="adress">Adresse</label>
+      <input
+        class="input-text"
+        type="text"
+        placeholder="Tapez votre adresse ici"
+        id="adress"
+        formControlName="adress"
+        (ngModelChange)="searchAdress($event)"
+        [value]="adressName"
+        (click)="displayAdress()"
+      />
+      <span
+        class="indication-input"
+        *ngIf="myForm.submitted && addMemberForm.controls.adress.errors?.['required']"
+        >Votre adresse est requise.</span
+      >
+      <ul
+        *ngIf="hasAdressApi && adressApi && adressApi.length > 0"
+        class="display-adress"
+      >
+        <li
+          *ngFor="let item of adressApi"
+          [innerHTML]="item.properties.label"
+          (click)="getAdress(item.properties.label); displayAdress()"
+        ></li>
+      </ul>
+    </fieldset>
+
+
     <fieldset>
       <label>Lien familial</label>
       <div
@@ -184,12 +227,16 @@
     <p>Ce chiffre n'est pas bon</p>
     <div class="allImages">
       <div class="one">
-        <img src="../assets/test - Copie.jpg" alt="" />
+        <p class="cubeThird">1</p>
+        <p class="cubeThird">+</p>
+        <p class="cubeThird">1</p>
       </div>
       <div class="two">
         <img src="../assets/leon.jpg" alt="" />
         <img src="../assets/echo.jpg" alt="" />
       </div>
+      <p class="equals">= 2</p>
     </div>
+
   </div>
 </div>
