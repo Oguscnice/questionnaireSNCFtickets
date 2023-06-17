@@ -538,6 +538,89 @@ table {
     }
   }
 }
+.no-margin {
+  margin-left: 0vw;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal-confirmation-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(5px);
+  @include justify-align-center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+  animation: fade-in 0.8s;
+  .content-text-and-buttons {
+    background-color: var(--main-color);
+    width: 75%;
+    max-width: 300px;
+    max-height: 450px;
+    border-radius: 10px;
+    border: 2px solid var(--second-color);
+    padding: 20px;
+    @include flex-column-justify-space-between;
+    p {
+      padding: calc($margin-page * 2) 0;
+      font-size: calc($font-size * 1.4);
+    }
+  }
+}
+.page-component {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.logo{
+  width: 20%;
+  margin-right: 16px;
+}
+
+h1{
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.input-radio-and-name {
+  display: flex;
+  margin-bottom: 4px;
+  p {
+    @include flex-align-items-center;
+    margin-left: 8%;
+    margin-bottom: 4px;
+  }
+}
+
+.allImages{
+  display: flex;
+  width: 100%;
+  .one{
+    max-width: 30%;
+    height: 100%;
+    object-fit: fill;
+    img{
+      width: 100%;
+    }
+  }
+  .two{
+    width: 100%;
+    img{
+      width: 100%;
+    }
+  }
+}
 @media screen and (min-width: 570px) {
   h1 {
     margin: $margin-page 0;
@@ -555,6 +638,11 @@ table {
       select {
         font-size: $font-size * 1.5;
       }
+    }
+  }
+  .modal-confirmation-page {
+    .content-text-and-buttons {
+      max-height: 300px;
     }
   }
 }
@@ -630,5 +718,8 @@ table {
   }
   .toggle {
     cursor: pointer;
+  }
+  .content-text-and-buttons {
+    margin-left: 25vw;
   }
 }
