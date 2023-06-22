@@ -107,7 +107,7 @@ $box-shadow: 8px 8px 4px
 .admin-family-member-request-page,
 .verification-page,
 .forgot-password-form-page,
-.page-component {
+.page-component, .gallery-component {
   margin: 0 calc($margin-page * 2);
   padding-top: 30px; /* height header */
   .admin-comment {

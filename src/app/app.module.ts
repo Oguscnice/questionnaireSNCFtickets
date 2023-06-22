@@ -4,9 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GalleryComponent } from './gallery/gallery.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, GalleryComponent, AccueilComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
