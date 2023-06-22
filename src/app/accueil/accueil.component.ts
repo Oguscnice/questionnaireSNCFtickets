@@ -15,11 +15,32 @@ export class AccueilComponent {
   enfantCount: boolean = false;
   modalBooleanError: boolean = false;
   errorNumberChirldren: boolean = false;
+  gallery: boolean = false;
   modalEcho: boolean = false;
   adressName: string = '';
   adressApi!: any;
   hasAdressApi: boolean = false;
   numberDisplay!: any;
+
+  imagesArray = [
+    { src: '../../assets/gallery/159682704_0.jpg' },
+    { src: '../../assets/gallery/159682780_0.jpg' },
+    { src: '../../assets/gallery/159682924_0.jpg' },
+    { src: '../../assets/gallery/159682954_0.jpg' },
+    { src: '../../assets/gallery/159682990_0.jpg' },
+    { src: '../../assets/gallery/159683090_0.jpg' },
+    { src: '../../assets/gallery/159683333_0.jpg' },
+    { src: '../../assets/gallery/159683650_0.jpg' },
+    { src: '../../assets/gallery/159683802_0.jpg' },
+    { src: '../../assets/gallery/159683925_0.jpg' },
+    { src: '../../assets/gallery/159684052_0.jpg' },
+    { src: '../../assets/gallery/159684096_0.jpg' },
+    { src: '../../assets/gallery/159684560_0.jpg' },
+    { src: '../../assets/gallery/159684888_0.jpg' },
+    { src: '../../assets/gallery/159685110_0.jpg' },
+    { src: '../../assets/gallery/159682704_0.jpg' },
+    { src: '../../assets/gallery/159685237_0.jpg' },
+  ];
 
   familyLinkArray = [
     { name: 'Conjoint(e)', value: 'Conjoint(e)' },
@@ -84,6 +105,11 @@ export class AccueilComponent {
     this.adressName = valueName;
     this.adressApi = [];
     this.addMemberForm.value.adress = valueName;
+  }
+
+  changeGallery(){
+    this.gallery = true
+    this.modalEcho = false
   }
 
   onSubmitAddMemberFamily() {

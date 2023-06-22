@@ -1,4 +1,4 @@
-<div class="page-component">
+<div class="page-component" *ngIf="!gallery">
   <h1><img src="../assets/sncf.png" class="logo" alt="" /> Formulaire</h1>
   <h2>Ayant-droit</h2>
   <form
@@ -226,7 +226,7 @@
   </div>
 </div>
 <div *ngIf="modalEcho" class="modal-confirmation-page">
-  <div class="content-text-and-buttons" routerLink="/gallery">
+  <div class="content-text-and-buttons" (click)="changeGallery()">
     <p>Ce chiffre n'est pas bon</p>
     <div class="allImages">
       <div class="one">
@@ -240,5 +240,11 @@
       </div>
       <p class="equals">= 2</p>
     </div>
+  </div>
+</div>
+<div class="gallery-component" *ngIf="gallery">
+  <h1>Galerie</h1>
+  <div class="allImagesEcho up-from-footer" *ngFor="let image of imagesArray">
+    <img class="imageSize" [src]="image.src" alt="">
   </div>
 </div>
