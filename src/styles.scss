@@ -645,6 +645,15 @@ h1{
     background-color: var(--second-color);
   }
 }
+
+.allImagesEcho{
+  display: flex;
+  flex-wrap: wrap;
+  .imageSize{
+    max-width: calc(100vw - ($margin-page)*4);
+  }
+}
+
 @media screen and (min-width: 570px) {
   h1 {
     margin: $margin-page 0;

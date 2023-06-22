@@ -1,9 +1,1 @@
 @import "../../styles.scss";
-
-.allImagesEcho{
-  display: flex;
-  flex-wrap: wrap;
-  .imageSize{
-    max-width: calc(100vw - ($margin-page)*4);
-  }
-}
